@@ -1,3 +1,5 @@
+import 'package:app_expenses/grafico/grafico.dart';
+import 'package:app_expenses/trancacao/componentes/transacoes-form.dart';
 import 'package:app_expenses/trancacao/componentes/transacoes.dart';
 import 'package:app_expenses/trancacao/transacao.dart';
 import 'package:flutter/material.dart';
@@ -60,68 +62,9 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-
-            /// TODO: REFATORAR PARA COMPONENTE: Gráfico
-            Container(
-              padding: EdgeInsets.all(8.0),
-              child: Card(
-                child: Text('Gráfico'),
-              ),
-            ),
-            /// TODO: REFATORAR PARA COMPONENTE: Transações
-
+            Grafico(),
             Transacoes(transacoesRealizadas: transacoes),
-
-            /// TODO: REFATORAR PARA COMPONENTE: Formulario de Transações
-            Container(
-              padding: EdgeInsets.all(8.0),
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    children: [
-                      TextField(
-                        controller: tituloController,
-                        decoration: InputDecoration(
-                          labelText: 'Titulo'
-                        ),
-                      ),
-                      TextField(
-                        controller: valorController,
-                        decoration: InputDecoration(
-                            labelText: 'Valor R\$'
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          FlatButton(
-                            onPressed: () {
-                              transacoes.add(
-                                Transacao(
-                                    uuid: DateTime.now().toIso8601String(),
-                                    data: DateTime.now(),
-                                    valor: double.parse(valorController.text),
-                                    titutlo: tituloController.text
-                                )
-                              );
-                            },
-                            child: Text('Nova Transação', style: TextStyle(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.redAccent
-                            ))
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              )
-            ),
-            /// TODO: REFATORAR PARA COMPONENTE: Formulario de Transações
-
-
+            TransacoesForm()
           ],
         ),
       )
