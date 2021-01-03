@@ -12,6 +12,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  final valorController = TextEditingController();
+  final tituloController = TextEditingController();
+
   final transacoes = [
     Transacao(
         uuid: DateTime.now().toIso8601String(),
@@ -55,7 +58,6 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
 
@@ -66,6 +68,8 @@ class _HomePageState extends State<HomePage> {
                 child: Text('Gráfico'),
               ),
             ),
+            /// TODO: REFATORAR PARA COMPONENTE: Transações
+
 
             /// TODO: REFATORAR PARA COMPONENTE: Transações
             Container(
@@ -73,7 +77,60 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [...cardsDeTransacoes()],
               ),
-            )
+            ),
+            /// TODO: REFATORAR PARA COMPONENTE: Transações
+
+
+            /// TODO: REFATORAR PARA COMPONENTE: Formulario de Transações
+            Container(
+              padding: EdgeInsets.all(8.0),
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: tituloController,
+                        decoration: InputDecoration(
+                          labelText: 'Titulo'
+                        ),
+                      ),
+                      TextField(
+                        controller: valorController,
+                        decoration: InputDecoration(
+                            labelText: 'Valor R\$'
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          FlatButton(
+                            onPressed: () {
+                              transacoes.add(
+                                Transacao(
+                                    uuid: DateTime.now().toIso8601String(),
+                                    data: DateTime.now(),
+                                    valor: double.parse(valorController.text),
+                                    titutlo: tituloController.text
+                                )
+                              );
+                            },
+                            child: Text('Nova Transação', style: TextStyle(
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.redAccent
+                            ))
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ),
+            /// TODO: REFATORAR PARA COMPONENTE: Formulario de Transações
+
+
           ],
         ),
       )
@@ -99,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                     )
                   ),
                   child: Text(
-                    'R\$ ${ transacao.valor }',
+                    'R\$ ${ transacao.valor.toStringAsFixed(2) }',
                     style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
