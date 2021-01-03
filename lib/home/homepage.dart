@@ -1,3 +1,4 @@
+import 'package:app_expenses/trancacao/transacao.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -9,6 +10,33 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  final transacoes = [
+    Transacao(
+        uuid: DateTime.now().toIso8601String(),
+        data: DateTime.now(),
+        valor: 200.90,
+        titutlo: 'Tênis de corrida'
+    ),
+    Transacao(
+        uuid: DateTime.now().toIso8601String(),
+        data: DateTime.now(),
+        valor: 200.00,
+        titutlo: 'Conta de luz'
+    ),
+    Transacao(
+        uuid: DateTime.now().toIso8601String(),
+        data: DateTime.now(),
+        valor: 350.00,
+        titutlo: 'Inalador T3'
+    ),
+    Transacao(
+        uuid: DateTime.now().toIso8601String(),
+        data: DateTime.now(),
+        valor: 250.00,
+        titutlo: 'Pneu 15 Michelan'
+    )
+  ];
 
   @override
   void initState() {
@@ -27,12 +55,11 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
 
             /// TODO: REFATORAR PARA COMPONENTE: Gráfico
             Container(
-              width: double.infinity,
               padding: EdgeInsets.all(8.0),
               child: Card(
                 child: Text('Gráfico'),
@@ -41,7 +68,6 @@ class _HomePageState extends State<HomePage> {
 
             /// TODO: REFATORAR PARA COMPONENTE: Transações
             Container(
-              width: double.infinity,
               padding: EdgeInsets.all(8.0),
               child: Card(
                 child: Text('Transações'),
