@@ -26,9 +26,27 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('Despesas Pessoais')
+
+            /// TODO: REFATORAR PARA COMPONENTE: Gráfico
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(8.0),
+              child: Card(
+                child: Text('Gráfico'),
+              ),
+            ),
+
+            /// TODO: REFATORAR PARA COMPONENTE: Transações
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(8.0),
+              child: Card(
+                child: Text('Transações'),
+              ),
+            )
           ],
         ),
       )
