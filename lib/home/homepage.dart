@@ -86,6 +86,14 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             children: [
               Container(
+                  margin: EdgeInsets.all(10.0),
+                  padding: EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black38,
+                      width: 2
+                    )
+                  ),
                   child: Text(
                     'R\$ ${ transacao.valor }',
                     style: TextStyle(
