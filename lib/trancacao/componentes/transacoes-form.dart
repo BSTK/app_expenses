@@ -5,6 +5,12 @@ class TransacoesForm extends StatelessWidget {
   final valorController = TextEditingController();
   final tituloController = TextEditingController();
 
+  final Function(String, String) criaNovaTransacao;
+
+  TransacoesForm({
+    this.criaNovaTransacao
+  });
+
   @override
   Widget build(BuildContext context) {
     return             Container(
@@ -31,7 +37,10 @@ class TransacoesForm extends StatelessWidget {
                   children: [
                     FlatButton(
                         onPressed: () {
-                          print('Criou nova Transação');
+                          criaNovaTransacao(
+                            tituloController.text,
+                            valorController.text
+                          );
                         },
                         child: Text('Nova Transação', style: TextStyle(
                             fontSize: 14.0,

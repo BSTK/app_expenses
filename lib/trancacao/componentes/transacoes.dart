@@ -1,74 +1,68 @@
-import 'package:app_expenses/helper/formatacao.dart';
+import 'dart:math';
+
+import 'package:app_expenses/trancacao/componentes/transacoes-form.dart';
+import 'package:app_expenses/trancacao/componentes/transacoes-list.dart';
 import 'package:app_expenses/trancacao/transacao.dart';
 import 'package:flutter/material.dart';
 
-class Transacoes extends StatelessWidget {
+class Transacoes extends StatefulWidget {
+  @override
+  _TransacoesState createState() => _TransacoesState();
+}
 
-  final List<Transacao> transacoesRealizadas;
+class _TransacoesState extends State<Transacoes> {
 
-  const Transacoes({
-    this.transacoesRealizadas
-  });
+  final transacoes = [
+    Transacao(
+        uuid: DateTime.now().toIso8601String(),
+        data: DateTime.now(),
+        valor: 200.90,
+        titutlo: 'Tênis de corrida'
+    ),
+    Transacao(
+        uuid: DateTime.now().toIso8601String(),
+        data: DateTime.now(),
+        valor: 200.00,
+        titutlo: 'Conta de luz'
+    ),
+    Transacao(
+        uuid: DateTime.now().toIso8601String(),
+        data: DateTime.now(),
+        valor: 350.00,
+        titutlo: 'Inalador T3'
+    ),
+    Transacao(
+        uuid: DateTime.now().toIso8601String(),
+        data: DateTime.now(),
+        valor: 250.00,
+        titutlo: 'Pneu 15 Michelan'
+    )
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(8.0),
-      child: Column(
-        children: [...cardsDeTransacoes()],
-      ),
+    return Column(
+      children: [
+        TransacoesList(
+          transacoesRealizadas: transacoes
+        ),
+        TransacoesForm(
+          criaNovaTransacao: criaNovaTransacao
+        )
+      ],
     );
   }
 
-  List<Widget> cardsDeTransacoes() {
-    return transacoesRealizadas
-        .map((transacao) => Card(
-        child: Row(
-          children: [
-            Container(
-                margin: EdgeInsets.all(10.0),
-                padding: EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        color: Colors.black38,
-                        width: 2
-                    ),
-                    borderRadius: BorderRadius.all(
-                        Radius.circular(50.0)
-                    )
-                ),
-                child: Text(
-                  'R\$ ${ transacao.valor.toStringAsFixed(2) }',
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  transacao.titutlo,
-                  style: TextStyle(
-                      color: Colors.black87,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20.0
-                  ),
-                ),
-                Text(
-                    Formatacao.dataDDMMYYYYHHMMSS(transacao.data),
-                    style: TextStyle(
-                        color: Colors.black38,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12.0
-                    )
-                )
-              ],
-            )
-          ],
-        )
-    ))
-    .toList();
+  void criaNovaTransacao(final String titulo, final String valor) {
+    if (titulo.isNotEmpty && valor.isNotEmpty) {
+      final novaTransacao = Transacao(
+          uuid: Random().nextDouble().toString(),
+          data: DateTime.now(),
+          titutlo: titulo,
+          valor: double.parse(valor)
+      );
+
+      setState(() => transacoes.add(novaTransacao));
+    }
   }
 }
