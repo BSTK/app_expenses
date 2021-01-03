@@ -1,3 +1,4 @@
+import 'package:app_expenses/helper/formatacao.dart';
 import 'package:app_expenses/trancacao/transacao.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -92,6 +93,9 @@ class _HomePageState extends State<HomePage> {
                     border: Border.all(
                       color: Colors.black38,
                       width: 2
+                    ),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(50.0)
                     )
                   ),
                   child: Text(
@@ -103,9 +107,24 @@ class _HomePageState extends State<HomePage> {
                   )
               ),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(transacao.titutlo),
-                  Text(transacao.data.toString())
+                  Text(
+                    transacao.titutlo,
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20.0
+                    ),
+                  ),
+                  Text(
+                    Formatacao.dataDDMMYYYYHHMMSS(transacao.data),
+                    style: TextStyle(
+                      color: Colors.black38,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 12.0
+                    )
+                  )
                 ],
               )
             ],
