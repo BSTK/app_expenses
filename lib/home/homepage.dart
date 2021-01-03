@@ -69,14 +69,41 @@ class _HomePageState extends State<HomePage> {
             /// TODO: REFATORAR PARA COMPONENTE: Transações
             Container(
               padding: EdgeInsets.all(8.0),
-              child: Card(
-                child: Text('Transações'),
+              child: Column(
+                children: [...cardsDeTransacoes()],
               ),
             )
           ],
         ),
       )
     );
+  }
+
+  /// TODO: REFATORAR PARA COMPONENTE: Transação
+  List<Widget> cardsDeTransacoes() {
+    return transacoes
+        .map((transacao) => Card(
+          child: Row(
+            children: [
+              Container(
+                  child: Text(
+                    'R\$ ${ transacao.valor }',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+              ),
+              Column(
+                children: [
+                  Text(transacao.titutlo),
+                  Text(transacao.data.toString())
+                ],
+              )
+            ],
+          )
+        ))
+        .toList();
   }
 
   @override
