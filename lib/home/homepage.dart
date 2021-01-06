@@ -19,6 +19,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -36,12 +42,6 @@ class _HomePageState extends State<HomePage> {
         ),
       )
     );
-  }
-
-  @override
-  void dispose() {
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-    super.dispose();
   }
 
 }

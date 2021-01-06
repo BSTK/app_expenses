@@ -7,22 +7,11 @@ class TransacoesList extends StatelessWidget {
   final List<Transacao> transacoesRealizadas;
 
   const TransacoesList({
-    this.transacoesRealizadas
+    @required this.transacoesRealizadas
   });
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(8.0),
-      child: Column(
-        children: [...cardsDeTransacoes()],
-      ),
-    );
-  }
-
-  List<Widget> cardsDeTransacoes() {
-    return transacoesRealizadas
-        .map((transacao) => Card(
+  Card itemTransacao(final Transacao transacao) {
+    return Card(
         child: Row(
           children: [
             Container(
@@ -68,7 +57,22 @@ class TransacoesList extends StatelessWidget {
             )
           ],
         )
-    ))
-    .toList();
+    );
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height / 2,
+      padding: EdgeInsets.all(8.0),
+      child: ListView.builder(
+        itemCount: transacoesRealizadas.length,
+        itemBuilder: (builderContext, index) {
+          final transacao = transacoesRealizadas[index];
+          return itemTransacao(transacao);
+        },
+      ),
+    );
+  }
+
 }

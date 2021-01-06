@@ -39,21 +39,8 @@ class _TransacoesState extends State<Transacoes> {
     )
   ];
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TransacoesList(
-          transacoesRealizadas: transacoes
-        ),
-        TransacoesForm(
-          criaNovaTransacao: criaNovaTransacao
-        )
-      ],
-    );
-  }
-
-  void criaNovaTransacao(final String titulo, final String valor) {
+  void criaNovaTransacao(final String titulo,
+                         final String valor) {
     if (titulo.isNotEmpty && valor.isNotEmpty) {
       final novaTransacao = Transacao(
           uuid: Random().nextDouble().toString(),
@@ -65,4 +52,15 @@ class _TransacoesState extends State<Transacoes> {
       setState(() => transacoes.add(novaTransacao));
     }
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        TransacoesForm(criaNovaTransacao: criaNovaTransacao),
+        TransacoesList(transacoesRealizadas: transacoes),
+      ],
+    );
+  }
+
 }

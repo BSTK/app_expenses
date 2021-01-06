@@ -8,7 +8,7 @@ class TransacoesForm extends StatelessWidget {
   final Function(String, String) criaNovaTransacao;
 
   TransacoesForm({
-    this.criaNovaTransacao
+    @required this.criaNovaTransacao
   });
 
   @override
