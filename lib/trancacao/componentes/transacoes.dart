@@ -42,14 +42,14 @@ class _TransacoesState extends State<Transacoes> {
   void criaNovaTransacao(final String titulo,
                          final String valor) {
     if (titulo.isNotEmpty && valor.isNotEmpty) {
-      final novaTransacao = Transacao(
+      final transacao = Transacao(
           uuid: Random().nextDouble().toString(),
           data: DateTime.now(),
           titutlo: titulo,
           valor: double.parse(valor)
       );
 
-      setState(() => transacoes.add(novaTransacao));
+      setState(() => transacoes.add(transacao));
     }
   }
 
