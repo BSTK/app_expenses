@@ -1,6 +1,6 @@
 import 'package:app_expenses/grafico/grafico.dart';
+import 'package:app_expenses/trancacao/componentes/transacoes-form.dart';
 import 'package:app_expenses/trancacao/componentes/transacoes-list.dart';
-import 'package:app_expenses/trancacao/componentes/transacoes-modal.dart';
 import 'package:app_expenses/trancacao/transacao.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
   void mostrarModalNovaTransacao(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      builder: (_) => TransacoesModal(transacoes: transacoes)
+      builder: (_) => TransacoesForm(transacoes: transacoes)
     );
   }
 
