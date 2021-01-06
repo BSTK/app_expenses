@@ -28,6 +28,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          )
+        ],
         centerTitle: true,
         backgroundColor: Colors.redAccent,
         title: Text('eXPenses'),
@@ -40,7 +49,15 @@ class _HomePageState extends State<HomePage> {
             Transacoes()
           ],
         ),
-      )
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+        onPressed: () {},
+      ),
     );
   }
 
