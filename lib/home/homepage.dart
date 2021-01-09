@@ -15,32 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  final List<Transacao> transacoes = [
-    /*Transacao(
-        uuid: DateTime.now().toIso8601String(),
-        data: DateTime.now(),
-        valor: 200.90,
-        titutlo: 'Tênis de corrida'
-    ),
-    Transacao(
-        uuid: DateTime.now().toIso8601String(),
-        data: DateTime.now(),
-        valor: 200.00,
-        titutlo: 'Conta de luz'
-    ),
-    Transacao(
-        uuid: DateTime.now().toIso8601String(),
-        data: DateTime.now(),
-        valor: 350.00,
-        titutlo: 'Inalador T3'
-    ),
-    Transacao(
-        uuid: DateTime.now().toIso8601String(),
-        data: DateTime.now(),
-        valor: 250.00,
-        titutlo: 'Pneu 15 Michelan'
-    )*/
-  ];
+  final List<Transacao> transacoes = [];
 
   @override
   void initState() {
