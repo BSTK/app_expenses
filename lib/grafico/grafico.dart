@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:app_expenses/grafico/grafico-barra.dart';
 import 'package:app_expenses/grafico/semana.dart';
 import 'package:app_expenses/trancacao/transacao.dart';
