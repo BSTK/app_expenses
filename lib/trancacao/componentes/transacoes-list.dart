@@ -59,20 +59,42 @@ class TransacoesList extends StatelessWidget {
         )
     );
   }
-
+  
   @override
   Widget build(BuildContext context) {
+    final transacoesCadastradasOuImagemNenhumaTransacao = transacoesRealizadas.isEmpty
+            ? Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    'Não há transações cadastradas!',
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(top: 25.0),
+                  height: 350,
+                  child: Image.asset(
+                    'assets/images/waiting.png',
+                    fit: BoxFit.cover,
+                    color: Colors.black38,
+                  ),
+                )
+              ],
+            )
+            : ListView.builder(
+                itemCount: transacoesRealizadas.length,
+                itemBuilder: (builderContext, index) {
+                  final transacao = transacoesRealizadas[index];
+                  return itemTransacao(transacao);
+                },
+              );
+
     return Container(
       height: MediaQuery.of(context).size.height - 120,
       padding: EdgeInsets.all(8.0),
-      child: ListView.builder(
-        itemCount: transacoesRealizadas.length,
-        itemBuilder: (builderContext, index) {
-          final transacao = transacoesRealizadas[index];
-          return itemTransacao(transacao);
-        },
-      ),
+      child: transacoesCadastradasOuImagemNenhumaTransacao,
     );
   }
-
 }
