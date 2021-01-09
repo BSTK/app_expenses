@@ -63,7 +63,7 @@ class TransacoesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 2,
+      height: MediaQuery.of(context).size.height - 120,
       padding: EdgeInsets.all(8.0),
       child: ListView.builder(
         itemCount: transacoesRealizadas.length,

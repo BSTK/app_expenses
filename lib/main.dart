@@ -7,6 +7,7 @@ void main() {
 }
 
 class App extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,8 +17,24 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+            headline6: TextStyle(
+              fontWeight: FontWeight.w300,
+              fontFamily: 'Quicksand',
+              fontSize: 25.0
+            )
+          )
+        ),
+        textTheme: ThemeData.light().textTheme.copyWith(
+          headline6: TextStyle(
+            fontWeight: FontWeight.w100,
+            fontFamily: 'Quicksand'
+          )
+        )
       ),
       home: HomePage(),
     );
   }
+
 }
