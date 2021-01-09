@@ -1,14 +1,11 @@
-import 'dart:math';
-
-import 'package:app_expenses/trancacao/transacao.dart';
 import 'package:flutter/material.dart';
 
 class TransacoesForm extends StatefulWidget {
 
-  final List<Transacao> transacoes;
+  final Function(String, String) novaTransacao;
 
   TransacoesForm({
-    @required this.transacoes
+    @required this.novaTransacao,
   });
 
   @override
@@ -20,29 +17,15 @@ class _TransacoesFormState extends State<TransacoesForm> {
   final valorController = TextEditingController();
   final tituloController = TextEditingController();
 
-  void criaNovaTransacao(final String titulo,
-                         final String valor) {
-    if (titulo.isNotEmpty && valor.isNotEmpty) {
-      final transacao = Transacao(
-          uuid: Random().nextDouble().toString(),
-          data: DateTime.now(),
-          titutlo: titulo,
-          valor: double.parse(valor)
-      );
-
-      setState(() => widget.transacoes.add(transacao));
-    }
-  }
-
   void adicionarNovaTransacao() {
     if (tituloController.text.isEmpty
-        || valorController.text.isEmpty) {
+     || valorController.text.isEmpty) {
       return;
     }
 
-    criaNovaTransacao(
-        tituloController.text,
-        valorController.text
+    widget.novaTransacao(
+      tituloController.text,
+      valorController.text
     );
   }
 

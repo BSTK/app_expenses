@@ -1,9 +1,10 @@
+import 'dart:math';
+
 import 'package:app_expenses/grafico/grafico.dart';
 import 'package:app_expenses/trancacao/componentes/transacoes-form.dart';
 import 'package:app_expenses/trancacao/componentes/transacoes-list.dart';
 import 'package:app_expenses/trancacao/transacao.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -43,21 +44,36 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    /// SystemChrome.setEnabledSystemUIOverlays([]);
     super.initState();
   }
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    /// SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
     super.dispose();
   }
 
   void mostrarModalNovaTransacao(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      builder: (_) => TransacoesForm(transacoes: transacoes)
+      builder: (_) => TransacoesForm(novaTransacao: novaTransacao)
     );
+  }
+
+  void novaTransacao(final String titulo, final String valor) {
+    if (titulo.isNotEmpty && valor.isNotEmpty) {
+      final transacao = Transacao(
+          uuid: Random().nextDouble().toString(),
+          data: DateTime.now(),
+
+          titutlo: titulo,
+          valor: double.parse(valor)
+      );
+
+      setState(() => transacoes.add(transacao));
+      Navigator.of(context).pop();
+    }
   }
 
   @override
