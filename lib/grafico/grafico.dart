@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:app_expenses/grafico/grafico-barra.dart';
 import 'package:app_expenses/grafico/semana.dart';
 import 'package:app_expenses/trancacao/transacao.dart';
 import 'package:flutter/material.dart';
@@ -42,14 +43,16 @@ class Grafico extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    transacoesAgrupadas;
     return Card(
       margin: const EdgeInsets.all(12.0),
       elevation: 10.0,
       child: Row(
-        children: [
-          Text('Gráfico')
-        ],
+        children: transacoesAgrupadas.map((transacaoAgrupada) {
+          return GraficoBarra(
+            dia: transacaoAgrupada['dia'],
+            valor: transacaoAgrupada['valor'],
+          );
+        }).toList(),
       ),
     );
   }
