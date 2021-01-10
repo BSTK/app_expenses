@@ -1,7 +1,5 @@
-import 'dart:io';
-
 import 'package:app_expenses/helper/formatacao.dart';
-import 'package:app_expenses/trancacao/transacao.dart';
+import 'package:app_expenses/home/componentes/trancacao/transacao.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

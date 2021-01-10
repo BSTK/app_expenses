@@ -1,10 +1,10 @@
 import 'dart:math';
 
-import 'package:app_expenses/grafico/grafico.dart';
-import 'package:app_expenses/grafico/semana.dart';
-import 'package:app_expenses/trancacao/transacao.dart';
-import 'package:app_expenses/trancacao/transacoes_form.dart';
-import 'package:app_expenses/trancacao/transacoes_list.dart';
+import 'package:app_expenses/home/componentes/grafico/grafico.dart';
+import 'package:app_expenses/home/componentes/grafico/semana.dart';
+import 'package:app_expenses/home/componentes/trancacao/transacao.dart';
+import 'package:app_expenses/home/componentes/trancacao/transacoes_form.dart';
+import 'package:app_expenses/home/componentes/trancacao/transacoes_list.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

@@ -1,6 +1,6 @@
-import 'package:app_expenses/grafico/grafico_barra.dart';
-import 'package:app_expenses/grafico/semana.dart';
-import 'package:app_expenses/trancacao/transacao.dart';
+import 'package:app_expenses/home/componentes/grafico/grafico_barra.dart';
+import 'package:app_expenses/home/componentes/grafico/semana.dart';
+import 'package:app_expenses/home/componentes/trancacao/transacao.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
