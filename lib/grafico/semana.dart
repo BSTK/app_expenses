@@ -22,6 +22,8 @@ class Semana {
         return diaSemana.value;
       }
     }
+
+    throw Exception('Index invalido!');
   }
 
 }

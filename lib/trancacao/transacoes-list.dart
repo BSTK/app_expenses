@@ -51,26 +51,24 @@ class TransacoesList extends StatelessWidget {
             )
           ),
           child: ListTile(
-            leading: Expanded(
-              child: Container(
-                  padding: EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Colors.black38,
-                          width: 1
-                      ),
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(50.0)
-                      )
-                  ),
-                  child: Text(
-                    'R\$ ${ transacao.valor.toStringAsFixed(2) }',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
+            leading: Container(
+                padding: EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Colors.black38,
+                        width: 1
                     ),
-                  )
-              ),
+                    borderRadius: BorderRadius.all(
+                        Radius.circular(50.0)
+                    )
+                ),
+                child: Text(
+                  'R\$ ${ transacao.valor.toStringAsFixed(2) }',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
             ),
             title: Text(
               transacao.titutlo,
@@ -101,13 +99,11 @@ class TransacoesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: EdgeInsets.all(8.0),
-        child: transacoesRealizadas.isEmpty
-          ? imagemNenhumaTransacao(context)
-          : transacoesCadastradas(),
-      )
+    return Container(
+      padding: EdgeInsets.all(8.0),
+      child: transacoesRealizadas.isEmpty
+        ? imagemNenhumaTransacao(context)
+        : transacoesCadastradas(),
     );
   }
 

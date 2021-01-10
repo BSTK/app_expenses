@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:app_expenses/grafico/grafico.dart';
 import 'package:app_expenses/grafico/semana.dart';
+import 'package:app_expenses/trancacao/transacao.dart';
 import 'package:app_expenses/trancacao/transacoes-form.dart';
 import 'package:app_expenses/trancacao/transacoes-list.dart';
-import 'package:app_expenses/trancacao/transacao.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -76,7 +76,6 @@ class _HomePageState extends State<HomePage> {
       final transacao = Transacao(
           uuid: Random().nextDouble().toString(),
           data: DateTime.now(),
-
           titutlo: titulo,
           valor: double.parse(valor)
       );
@@ -94,6 +93,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final bool orientacaoTelaPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+    final bool orientacaoTelaLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -107,28 +109,41 @@ class _HomePageState extends State<HomePage> {
         ],
         centerTitle: true,
         backgroundColor: Colors.redAccent,
-        title: Text('eXPenses'),
+        title: Text(
+          'eXPenses',
+          style: TextStyle(
+            fontSize: 25.0 * MediaQuery.of(context).textScaleFactor
+          ),
+        ),
       ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Grafico(transacoesRecentes: transacoesRecentes),
-            TransacoesList(
-              transacoesRealizadas: transacoes,
-              excluirTransacao: excluirTransacao
-            )
+            Expanded(
+                flex: 1,
+                child: Grafico(transacoesRecentes: transacoesRecentes)
+            ),
+            if (orientacaoTelaPortrait)
+              Expanded(
+                flex: 3,
+                child: TransacoesList(
+                    transacoesRealizadas: transacoes,
+                    excluirTransacao: excluirTransacao),
+              )
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-        onPressed: () => mostrarModalNovaTransacao(context),
-      ),
+      floatingActionButton: orientacaoTelaPortrait
+          ? FloatingActionButton(
+            child: Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+            onPressed: () => mostrarModalNovaTransacao(context),
+          )
+          : null
     );
   }
 

@@ -37,8 +37,7 @@ class Grafico extends StatelessWidget {
         TRANSACOES_AGRUPADAS_VALOR: totalSoma,
         TRANSACOES_AGRUPADAS_DIA: Semana.dia(diaDaSemana.weekday)[0],
       };
-    }).reversed
-      .toList();
+    });
   }
 
   double get totalSomaSemana {
@@ -57,15 +56,12 @@ class Grafico extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: transacoesAgrupadas.map((transacaoAgrupada) {
-            return Flexible(
-              fit: FlexFit.tight,
-              child: GraficoBarra(
-                dia: transacaoAgrupada[TRANSACOES_AGRUPADAS_DIA],
-                valor: transacaoAgrupada[TRANSACOES_AGRUPADAS_VALOR],
-                percentual: totalSomaSemana > 0
-                  ? (transacaoAgrupada[TRANSACOES_AGRUPADAS_VALOR] as double) / totalSomaSemana
-                  : 0.0,
-              ),
+            return GraficoBarra(
+              dia: transacaoAgrupada[TRANSACOES_AGRUPADAS_DIA],
+              valor: transacaoAgrupada[TRANSACOES_AGRUPADAS_VALOR],
+              percentual: totalSomaSemana > 0
+                ? (transacaoAgrupada[TRANSACOES_AGRUPADAS_VALOR] as double) / totalSomaSemana
+                : 0.0,
             );
           }).toList(),
         ),
