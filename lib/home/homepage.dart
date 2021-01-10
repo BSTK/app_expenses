@@ -86,6 +86,12 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  void excluirTransacao(final int index) {
+    if (index >= 0) {
+      setState(() => transacoes.removeAt(index));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,7 +114,10 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Grafico(transacoesRecentes: transacoesRecentes),
-            TransacoesList(transacoesRealizadas: transacoes)
+            TransacoesList(
+              transacoesRealizadas: transacoes,
+              excluirTransacao: excluirTransacao
+            )
           ],
         ),
       ),

@@ -34,7 +34,8 @@ class Grafico extends StatelessWidget {
         'dia': Semana.dia(diaDaSemana.weekday)[0],
         'valor': totalSoma,
       };
-    });
+    }).reversed
+      .toList();
   }
 
   @override
