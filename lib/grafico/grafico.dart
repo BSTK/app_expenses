@@ -6,6 +6,9 @@ import 'package:flutter/painting.dart';
 
 class Grafico extends StatelessWidget {
 
+  static const String TRANSACOES_AGRUPADAS_DIA = 'dia';
+  static const String TRANSACOES_AGRUPADAS_VALOR = 'valor';
+
   final List<Transacao> transacoesRecentes;
 
   const Grafico({
@@ -31,11 +34,17 @@ class Grafico extends StatelessWidget {
       }
 
       return {
-        'dia': Semana.dia(diaDaSemana.weekday)[0],
-        'valor': totalSoma,
+        TRANSACOES_AGRUPADAS_VALOR: totalSoma,
+        TRANSACOES_AGRUPADAS_DIA: Semana.dia(diaDaSemana.weekday)[0],
       };
     }).reversed
       .toList();
+  }
+
+  double get totalSomaSemana {
+    return transacoesAgrupadas.fold(0.0, (soma, transacao) {
+      return soma + transacao[TRANSACOES_AGRUPADAS_VALOR];
+    });
   }
 
   @override
@@ -51,8 +60,11 @@ class Grafico extends StatelessWidget {
             return Flexible(
               fit: FlexFit.tight,
               child: GraficoBarra(
-                dia: transacaoAgrupada['dia'],
-                valor: transacaoAgrupada['valor'],
+                dia: transacaoAgrupada[TRANSACOES_AGRUPADAS_DIA],
+                valor: transacaoAgrupada[TRANSACOES_AGRUPADAS_VALOR],
+                percentual: totalSomaSemana > 0
+                  ? (transacaoAgrupada[TRANSACOES_AGRUPADAS_VALOR] as double) / totalSomaSemana
+                  : 0.0,
               ),
             );
           }).toList(),

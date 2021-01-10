@@ -38,7 +38,7 @@ class GraficoBarra extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0)),
                 ),
                 FractionallySizedBox(
-                  heightFactor: 0.5,
+                  heightFactor: percentual,
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.green,
