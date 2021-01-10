@@ -1,11 +1,11 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:app_expenses/grafico/grafico.dart';
 import 'package:app_expenses/grafico/semana.dart';
 import 'package:app_expenses/trancacao/transacao.dart';
 import 'package:app_expenses/trancacao/transacoes-form.dart';
 import 'package:app_expenses/trancacao/transacoes-list.dart';
-import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -15,6 +15,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  bool transacoesVisivel = true;
 
   final List<Transacao> transacoes = [
     Transacao(
@@ -99,6 +101,19 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         actions: [
+          orientacaoTelaLandscape
+              ? IconButton(
+                  icon: Icon(
+                    transacoesVisivel
+                      ? Icons.assessment
+                      : Icons.format_list_bulleted,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    setState(() => transacoesVisivel = !transacoesVisivel);
+                  },
+                )
+              : Container(),
           IconButton(
             icon: Icon(
               Icons.add,
@@ -120,11 +135,12 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Expanded(
-                flex: 1,
-                child: Grafico(transacoesRecentes: transacoesRecentes)
-            ),
-            if (orientacaoTelaPortrait)
+            if (orientacaoTelaPortrait || (orientacaoTelaLandscape && !transacoesVisivel))
+              Expanded(
+                  flex: 1,
+                  child: Grafico(transacoesRecentes: transacoesRecentes)
+              ),
+            if (orientacaoTelaPortrait || transacoesVisivel)
               Expanded(
                 flex: 3,
                 child: TransacoesList(
