@@ -2,13 +2,13 @@ class Semana {
 
   static Map<int, String> get dias {
     return {
-      0: 'Domingo',
-      1: 'Segunda Feira',
-      2: 'Terça Feira',
-      3: 'Quarta Feira',
-      4: 'Quinta Feira',
-      5: 'Sexta Feira',
-      6: 'Sábado'
+      1: 'Domingo',
+      2: 'Segunda Feira',
+      3: 'Terça Feira',
+      4: 'Quarta Feira',
+      5: 'Quinta Feira',
+      6: 'Sexta Feira',
+      7: 'Sábado'
     };
   }
 

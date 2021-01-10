@@ -30,10 +30,8 @@ class Grafico extends StatelessWidget {
         }
       }
 
-      print('Dia = ${Semana.dia(index)[0]} | R\$ Valor = $totalSoma');
-
       return {
-        'dia': Semana.dia(index)[0],
+        'dia': Semana.dia(diaDaSemana.weekday)[0],
         'valor': totalSoma,
       };
     });
@@ -44,13 +42,20 @@ class Grafico extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.all(12.0),
       elevation: 10.0,
-      child: Row(
-        children: transacoesAgrupadas.map((transacaoAgrupada) {
-          return GraficoBarra(
-            dia: transacaoAgrupada['dia'],
-            valor: transacaoAgrupada['valor'],
-          );
-        }).toList(),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: transacoesAgrupadas.map((transacaoAgrupada) {
+            return Flexible(
+              fit: FlexFit.tight,
+              child: GraficoBarra(
+                dia: transacaoAgrupada['dia'],
+                valor: transacaoAgrupada['valor'],
+              ),
+            );
+          }).toList(),
+        ),
       ),
     );
   }

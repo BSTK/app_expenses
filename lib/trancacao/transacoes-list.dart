@@ -95,12 +95,14 @@ class TransacoesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height - 200,
-      padding: EdgeInsets.all(8.0),
-      child: transacoesRealizadas.isEmpty
-        ? imagemNenhumaTransacao(context)
-        : transacoesCadastradas(),
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.all(8.0),
+        child: transacoesRealizadas.isEmpty
+          ? imagemNenhumaTransacao(context)
+          : transacoesCadastradas(),
+      ),
     );
   }
+
 }

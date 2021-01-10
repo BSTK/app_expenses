@@ -19,12 +19,15 @@ class GraficoBarra extends StatelessWidget {
       padding: const EdgeInsets.all(2.0),
       child: Column(
         children: [
-          Text('$dia',
-              style: TextStyle(fontSize: 20.0, fontFamily: 'Quicksand')),
+          FittedBox(
+            fit: BoxFit.fitWidth,
+            child: Text('$dia',
+                style: TextStyle(fontSize: 20.0, fontFamily: 'Quicksand')),
+          ),
           SizedBox(height: 3),
           Container(
             height: 60,
-            width: 18,
+            width: 15,
             child: Stack(
               alignment: Alignment.bottomCenter,
               children: [
@@ -47,13 +50,17 @@ class GraficoBarra extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          Text('R\$ $valor',
-              style: TextStyle(
-                  fontSize: 13.0,
-                  fontFamily: 'Quicksand'
-              )),
+          FittedBox(
+            fit: BoxFit.cover,
+            child: Text('R\$ $valor',
+                style: TextStyle(
+                    fontSize: 13.0,
+                    fontFamily: 'Quicksand'
+                )),
+          ),
         ],
       ),
     );
   }
+
 }
