@@ -7,7 +7,7 @@ class Transacao {
   final double valor;
   final DateTime data;
 
-  Transacao({
+  const Transacao({
     @required this.uuid,
     @required this.data,
     @required this.valor,

@@ -3,12 +3,12 @@ import 'dart:math';
 import 'package:app_expenses/grafico/grafico.dart';
 import 'package:app_expenses/grafico/semana.dart';
 import 'package:app_expenses/trancacao/transacao.dart';
-import 'package:app_expenses/trancacao/transacoes-form.dart';
-import 'package:app_expenses/trancacao/transacoes-list.dart';
+import 'package:app_expenses/trancacao/transacoes_form.dart';
+import 'package:app_expenses/trancacao/transacoes_list.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+  const HomePage({Key key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();

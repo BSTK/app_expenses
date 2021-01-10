@@ -19,7 +19,7 @@ class App extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         appBarTheme: AppBarTheme(
           textTheme: ThemeData.light().textTheme.copyWith(
-            headline6: TextStyle(
+            headline6: const TextStyle(
               fontWeight: FontWeight.w300,
               fontFamily: 'Quicksand',
               fontSize: 25.0
@@ -27,7 +27,7 @@ class App extends StatelessWidget {
           )
         ),
         textTheme: ThemeData.light().textTheme.copyWith(
-          headline6: TextStyle(
+          headline6: const TextStyle(
             fontWeight: FontWeight.w100,
             fontFamily: 'Quicksand'
           )

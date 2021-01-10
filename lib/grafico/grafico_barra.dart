@@ -7,7 +7,7 @@ class GraficoBarra extends StatelessWidget {
   final double valor;
   final double percentual;
 
-  GraficoBarra({
+  const GraficoBarra({
     @required this.dia,
     @required this.valor,
     @required this.percentual
