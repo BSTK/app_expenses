@@ -41,6 +41,8 @@ class TransacoesList extends StatelessWidget {
       itemCount: transacoesRealizadas.length,
       itemBuilder: (builderContext, index) {
         final transacao = transacoesRealizadas[index];
+        final bool orientacaoTelaLandscape = MediaQuery.of(builderContext).orientation == Orientation.landscape;
+
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 10.0),
           decoration: BoxDecoration(
@@ -86,11 +88,18 @@ class TransacoesList extends StatelessWidget {
                     fontSize: 12.0
                 )
             ),
-            trailing: IconButton(
-              color: Colors.redAccent,
-              icon: Icon(Icons.delete),
-              onPressed: () => excluirTransacao(index)
-            ),
+            trailing: orientacaoTelaLandscape
+                ? FlatButton.icon(
+                    onPressed: () => excluirTransacao(index),
+                    icon: Icon(Icons.delete),
+                    label: Text('Excluir'),
+                    textColor: Colors.redAccent,
+                )
+                : IconButton(
+                  color: Colors.redAccent,
+                  icon: Icon(Icons.delete),
+                  onPressed: () => excluirTransacao(index)
+                )
           ),
         );
       }
